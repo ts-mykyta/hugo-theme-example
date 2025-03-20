@@ -2,12 +2,14 @@ services:
   - type: web
     name: hugo-betting-site
     env: static
-    buildCommand: npm install && npm run build
+    buildCommand: npm install && npm run build:all
     staticPublishPath: ./public
     pullRequestPreviewsEnabled: true
     envVars:
       - key: HUGO_VERSION
         value: 0.121.1
+      - key: NODE_VERSION
+        value: 18
     buildFilter:
       paths:
         - assets/**
