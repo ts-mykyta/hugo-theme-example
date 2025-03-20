@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ .Title }} - {{ .Site.Title }}</title>
     {{ $styles := resources.Get "css/main.css" }}
-    {{ $styles = $styles | resources.PostCSS (dict "config" "postcss.config.js") }}
+    {{ $styles = $styles | css.PostCSS (dict "config" "postcss.config.js") }}
     {{ if hugo.IsProduction }}
         {{ $styles = $styles | minify | fingerprint | resources.PostProcess }}
     {{ end }}
