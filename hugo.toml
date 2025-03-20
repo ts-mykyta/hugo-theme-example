@@ -1,0 +1,164 @@
+baseURL = 'http://example.com/'
+languageCode = 'en-us'
+title = 'Operator Betting'
+disableHugoGeneratorInject = true
+
+# Основні параметри сайту
+[params]
+description = "A modular Hugo theme example"
+keywords = "some keywords for this site"
+author = "Your Name"
+
+# Налаштування компонентів
+[params.layouts]
+footer = "footer-1"
+header = "header-1"
+banner = "banner-1"
+betting = "betting-2"
+
+# Terms page configuration
+[params.terms]
+accent_color = "amber"  # Can be amber, blue, green, red, purple
+subtitle = "Important information about your rights and responsibilities"
+
+# Gaming page configuration
+[params.gaming]
+accent_color = "green"  # Can be amber, blue, green, red, purple
+subtitle = "Play responsibly and stay in control of your gaming experience"
+
+# Доступні компоненти
+[params.layouts.available]
+headers = ["header-1", "header-2", "header-3"]
+footers = ["footer-1", "footer-2", "footer-3"]
+banners = ["banner-1", "banner-2", "banner-3"]
+bettings = ["betting-1", "betting-2", "betting-3"]
+
+# Керування секціями
+[params.sections]
+banner = true
+betting = true
+
+# Betting parameters
+[params.betting]
+title = "Betting Options"
+description = "Choose from our wide range of betting options, each offering unique features and competitive odds."
+
+# Horse Racing Card 1
+[params.betting.card1]
+title = "Horse Racing"
+location = "Dapto • NSW • AUS"
+race_number = "R7"
+matches = [
+  { number = "2", color = "black", name = "Got The Feature", opening_price = "10.00", win_odds = "26.00", text_color = "white" },
+  { number = "4", color = "yellow-400", name = "King Tide", opening_price = "2.00", win_odds = "2.50", text_color = "black" },
+  { number = "1", color = "pink-500", name = "Ayden's Warrior", opening_price = "1.75", win_odds = "1.45", text_color = "white" }
+]
+
+# Horse Racing Card 2
+[params.betting.card2]
+title = "Horse Racing"
+location = "Penrith • NSW • AUS"
+race_number = "R6"
+matches = [
+  { number = "3", color = "purple-600", name = "Choc A Block", opening_price = "3.10", win_odds = "2.60", text_color = "white" },
+  { number = "7", color = "red-500", name = "Major Jarod", opening_price = "3.50", win_odds = "3.60", text_color = "white" },
+  { number = "4", color = "blue-500", name = "Line Me Up Bro Nz", opening_price = "9.00", win_odds = "11.00", text_color = "white" }
+]
+
+# Horse Racing Card 3
+[params.betting.card3]
+title = "Horse Racing"
+location = "Warrnambool • VIC • AUS"
+race_number = "R8"
+matches = [
+  { number = "5", color = "green-500", name = "Swift Victory", opening_price = "4.20", win_odds = "5.50", text_color = "white" },
+  { number = "2", color = "orange-500", name = "Racing Spirit", opening_price = "2.80", win_odds = "3.20", text_color = "white" },
+  { number = "8", color = "indigo-500", name = "Thunder Dash", opening_price = "6.50", win_odds = "7.80", text_color = "white" }
+]
+
+# Menu items
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = 1
+
+  [[menu.main]]
+    identifier = "terms"
+    name = "Terms and Conditions"
+    url = "/terms/"
+    weight = 2
+
+  [[menu.main]]
+    identifier = "gaming"
+    name = "Responsible Gaming"
+    url = "/gaming/"
+    weight = 3
+
+  
+# Header params
+[params.header]
+first_button_text = "Sign In"
+second_button_text = "Sign Up"
+
+# Modals params
+[params.modal]
+signup_title = "Sign Up"
+signup_username = "Username"
+signup_email = "Email"
+signup_password = "Password"
+signup_button = "Register"
+signin_title = "Sign In"
+signin_email = "Email"
+signin_password = "Password"
+signin_button = "Login"
+signin_error_message = "Login or password is wrong"
+
+# Thank you page configuration
+[params.thank_you]
+title = "Registration Successful!"
+message = "Thank you for joining our betting community. You will be redirected to the home page in a few seconds."
+accent_color = "green"
+
+[params.banner]
+  image = "/img/banner.jpeg"
+  text = ""
+
+
+# Footer params
+[params.footer]
+tagline = "Online Betting on Horse Racing & Sports"
+description = "If you enjoy the thunder of hooves down the straight, or the sound of the crowd going wild after a buzzer beating shot, then NOISY is the online betting site for you. Bet on horse racing, harness racing, greyhound racing and all your favourite sports around Australia and across the globe. Level up your betting experience with cracking promos, exclusive offers and watch live Sky Racing on the app, download it now! Enjoy great odds, comprehensive racing coverage and all the features you'd expect to help punters to get NOISY celebrating a win - it's time to bet rowdy and victorious with NOISY!"
+license_text = "BetStop is the National Self Exclusion Register. We are licensed and regulated by the Northern Territory Racing and Wagering Commission For SA residents, we are governed by a Code of Practice"
+copyright = "© 2025 Amused Australia Pty Ltd"
+email = "info@example.com"
+phone = "+1234567890"
+gambling_support_title = "WHAT ARE YOU REALLY GAMBLING WITH?"
+gabmling_support_text = "For free and confidential support call"
+gambling_support_site = "gamblinghelponline.org.au"
+
+[build]
+writeStats = true
+
+[build.buildStats]
+enable = true
+
+[module]
+[[module.mounts]]
+source = "assets"
+target = "assets"
+
+[[module.mounts]]
+source = "static"
+target = "static"
+
+[security]
+[security.funcs]
+getenv = ['^HUGO_', '^CI$']
+
+[build.processing]
+[build.processing.css]
+method = "postcss"
+includePaths = ["assets/css"]
+options = {}

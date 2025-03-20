@@ -1,0 +1,58 @@
+{{ $header := .context.Site.Params.header }}
+
+<header class="w-full bg-zinc-800">
+    <div class="max-w-9xl mx-auto px-4 md:px-6 mx-auto lg:px-8">
+        <div x-data="{ isOpen: false }" class="relative py-3 flex justify-between items-center">
+            <nav>
+                <ul class="hidden md:flex items-center gap-4">
+                    {{ range .context.Site.Menus.main }}
+                    <li>
+                        <a href="{{ .URL }}" class="hover:opacity-60 ease-linear font-semibold text-md text-white" @click="isOpen = false">
+                            {{ .Name }}
+                        </a>
+                    </li>
+                    {{ end }}
+                </ul>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <button class="py-2 px-4 border rounded-full bg-blue-550 text-white font-bold hover:bg-white hover:text-black" @click="openModal = 'signin'">
+                    {{ $header.first_button_text }}
+                </button>
+                <button class="py-2 px-4 border rounded-full bg-white text-black font-bold hover:bg-black hover:text-white" @click="openModal = 'signup'">
+                    {{ $header.second_button_text }}
+                </button>
+            </div>
+
+            <nav x-show="isOpen" x-transition:enter="transition ease-out duration-300 transform"
+                x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0"
+                x-transition:leave="transition ease-in duration-200 transform" x-transition:leave-start="translate-x-0"
+                x-transition:leave-end="-translate-x-full"
+                class="fixed h-screen bg-black left-0 top-0 w-screen text-white py-24 px-8 md:hidden"
+                @click.away="isOpen = false">
+                <ul class="flex flex-col items-center gap-4">
+                    {{ range .context.Site.Menus.main }}
+                    <li>
+                        <a href="{{ .URL }}" class="hover:opacity-60 ease-linear font-semibold text-md"
+                            @click="isOpen = false">
+                            {{ .Name }}
+                        </a>
+                    </li>
+                    {{ end }}
+                </ul>
+            </nav>
+
+            <div class="flex flex-col gap-2 z-10 w-6 cursor-pointer transition-all duration-300 md:hidden"
+                @click="isOpen = !isOpen">
+                <span class="w-full h-[2px] transition-all duration-300"
+                    :class="isOpen ? 'bg-white rotate-45 translate-y-2' : 'bg-white'">
+                </span>
+                <span class="w-full h-[2px] transition-all duration-300" :class="isOpen ? 'opacity-0' : 'bg-white'">
+                </span>
+                <span class="w-full h-[2px] transition-all duration-300"
+                    :class="isOpen ? 'bg-white -rotate-45 -translate-y-3' : 'bg-white'">
+                </span>
+            </div>
+        </div>
+    </div>
+</header>

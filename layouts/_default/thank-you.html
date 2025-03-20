@@ -1,0 +1,56 @@
+{{ define "main" }}
+<!-- Auto-redirect script -->
+<script>
+  setTimeout(function() {
+    window.location.href = "/";
+  }, 10000);
+</script>
+
+<div class="min-h-screen bg-zinc-900 flex items-center justify-center">
+  <div class="container mx-auto px-4">
+    <div class="max-w-2xl mx-auto text-center">
+      <!-- Success Icon -->
+      <div class="mb-8">
+        <svg class="w-20 h-20 text-{{ .Site.Params.thank_you.accent_color }}-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+      </div>
+
+      <!-- Title -->
+      <h1 class="text-4xl font-bold text-white mb-4">
+        {{ .Site.Params.thank_you.title }}
+      </h1>
+
+      <!-- Message -->
+      <p class="text-xl text-zinc-400 mb-8">
+        {{ .Site.Params.thank_you.message }}
+      </p>
+
+      <!-- Countdown -->
+      <div class="text-zinc-500 mb-8">
+        Redirecting in <span id="countdown">10</span> seconds...
+      </div>
+
+      <!-- Manual redirect button -->
+      <a href="/" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-{{ .Site.Params.thank_you.accent_color }}-600 hover:bg-{{ .Site.Params.thank_you.accent_color }}-700 transition-colors duration-200">
+        Go to Home Page
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Countdown script -->
+<script>
+  var seconds = 10;
+  var countdown = document.getElementById('countdown');
+  
+  var timer = setInterval(function() {
+    seconds--;
+    countdown.textContent = seconds;
+    
+    if (seconds <= 0) {
+      clearInterval(timer);
+    }
+  }, 1000);
+</script>
+{{ end }} 

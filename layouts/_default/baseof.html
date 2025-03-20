@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html lang="{{ or site.Language.LanguageCode site.Language.Lang }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Title }} - {{ .Site.Title }}</title>
+    {{ $css := resources.Get "css/main.css" | css.PostCSS }}
+    {{ if hugo.IsProduction }}
+        {{ $css = $css | minify | fingerprint | resources.PostProcess }}
+    {{ end }}
+    <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+    <meta name="description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Params.description }}{{ end }}">
+    <meta name="keywords" content="{{ .Site.Params.keywords }}">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Alpine.js -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Додаткові стилі -->
+    <style>
+        /* Ваші базові стилі */
+    </style>
+</head>
+
+<body class="bg-white min-h-screen flex flex-col" x-data="{ openModal: '' }">
+    {{/* Завантаження вибраного header */}}
+    {{ partial "component-loader.html" (dict "type" "headers" "name" $.Site.Params.layouts.header "context" .) }}
+
+    <main class="flex-grow">
+        {{ block "main" . }}{{ end }}
+    </main>
+
+    <!-- Завантаження додаткових секцій з перевіркою прапорців у конфігурації -->
+    {{ if not (eq .Site.Params.sections.disclaimer false) }}
+
+    {{ partial "component-loader.html" (dict 
+
+        "type" "disclaimer" 
+
+        "name" (.Site.Params.layouts.disclaimer | default "disclaimer-1")
+
+        "context" .
+
+    ) }}
+
+    {{ end }}
+
+    {{/* Завантаження вибраного footer */}}
+    {{ partial "component-loader.html" (dict "type" "footers" "name" $.Site.Params.layouts.footer "context" .) }}
+
+
+    <!-- Modals -->
+    {{ partial "components/elements/sign-in.html" . }}
+    {{ partial "components/elements/sign-up.html" . }}
+
+    <!-- Додаткові скрипти -->
+    <script>
+        // Базові JavaScript функції
+    </script>
+</body>
+</html>

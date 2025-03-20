@@ -1,0 +1,57 @@
+{{ $footer := .context.Site.Params.footer }}
+
+<footer class="w-full bg-zinc-800">
+<div class="text-center lg:text-left py-12 px-6 grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-20">
+  <div class="hover:shadow-md rounded-full bg-zinc-300 max-w-lg mx-auto mb-4 flex justify-center items-center p-2">
+    <div class="px-3 pb-3 pt-3">
+      <div class="flex flex-col gap-2 items-center">
+        <div class="items-center m-0 text-ng-header2-small lg:text-ng-header2-large text-black">
+          {{ $footer.gambling_support_title }}
+        </div>
+        <div class="items-center m-0 text-ng-body1-small lg:text-ng-body1-large text-center text-black">
+          {{ $footer.gambling_support_text }}
+          <a href="tel:{{ $footer.phone }}" class="cursor-pointer text-black">{{ $footer.phone }}</a>
+          or visit <a class="underline cursor-pointer text-black" href="https://{{ $footer.gambling_support_site }}"
+            target="_blank" rel="noopener noreferrer">
+            {{ $footer.gambling_support_site }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a href="{{ .context.Site.BaseURL }}" class="text-3xl font-bold text-white text-center">{{ .context.Site.Title }}</a>
+
+  <div class="flex justify-center flex-col items-center space-y-7 pb-6">
+    <div class="flex justify-center px-3 lg:px-0">
+      {{ partial "components/elements/partners.html" }}
+    </div>
+
+    <div class="flex justify-center px-3 lg:px-0">
+      {{ partial "components/elements/payments.html" }}
+    </div>
+  </div>
+
+  <div class="lg:col-span-3 flex flex-col items-center gap-3 text-white">
+    <div class="space-y-4">
+      <div class="text-center mb-4 text-ng-header2-large lg:text-ng-header2-large">
+        {{ $footer.tagline }}
+      </div>
+      <div class="text-center mt-4 text-ng-body2-large lg:text-ng-body1-large">
+        {{ $footer.description }}
+      </div>
+    </div>
+    <div class="space-y-8 mt-8 lg:m-0">
+      <div class="m-0">
+        <div class="text-center text-ng-body2-large lg:text-ng-body1-large">
+          {{ $footer.license_text }}
+        </div>
+        <div class="text-center text-ng-body2-large lg:text-ng-body1-large mt-4">
+          {{ $footer.copyright }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</footer>

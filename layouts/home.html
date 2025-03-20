@@ -1,0 +1,13 @@
+{{ define "main" }}
+
+{{ partial "component-loader.html" (dict "type" "banners" "name" .Site.Params.layouts.banner "context" .) }}
+
+{{ if not (eq .Site.Params.sections.betting false) }}
+{{ partial "component-loader.html" (dict 
+    "type" "bettings" 
+    "name" (.Site.Params.layouts.betting | default "betting-1")
+    "context" .
+) }}
+{{ end }}
+
+{{ end }}

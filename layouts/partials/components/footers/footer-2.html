@@ -1,0 +1,91 @@
+{{ $footer := .context.Site.Params.footer }}
+
+<footer class="w-full bg-blue-950">
+  <div class="text-center lg:text-left py-12 px-6">
+    <div class="flex justify-center flex-col items-center space-y-7 pb-6">
+      <div class="flex flex-col items-center gap-3">
+        <a 
+        href="{{ .context.Site.BaseURL }}"
+        class="text-xl font-bold text-white "
+        >{{ .context.Site.Title }}</a>
+
+        {{ with $footer.email }}
+          <a href="mailto:{{ . }}" class="font-bold text-white text-md"> {{ . }}</a>
+        {{end}}
+      </div>
+
+      <div class="flex justify-center px-3 lg:px-0">
+        {{ partial "components/elements/partners.html" }}
+      </div>
+
+
+      <div class="flex justify-center px-3 lg:px-0">
+        {{ partial "components/elements/payments.html" }}
+      </div>
+    </div>
+    <div
+      class="lg:pb-6 flex flex-col items-center gap-3"
+      style="color: rgb(255, 255, 255)"
+    >
+      <div class="space-y-4">
+        <div class="space-y-4">
+          <div
+            class="text-center mb-4 text-ng-header2-large lg:text-ng-header2-large"
+          >
+            {{ $footer.tagline }}
+          </div>
+          <div
+            class="text-center mt-4 text-ng-body2-large lg:text-ng-body1-large"
+          >
+            {{ $footer.description }}
+          </div>
+        </div>
+      </div>
+      <div class="space-y-8 mt-8 lg:m-0 false">
+        <div class="m-0">
+          <div
+            class="text-center m-0 text-ng-body2-large lg:text-ng-body1-large"
+            style="color: rgb(255, 255, 255)"
+          >
+            {{ $footer.license_text }}
+          </div>
+          <div
+            class="text-center m-0 text-ng-body2-large lg:text-ng-body1-large mt-4"
+            style="color: rgb(255, 255, 255)"
+          >
+            {{ $footer.copyright }}
+          </div>
+        </div>
+        <div
+          class="hover:shadow-md rounded-full"
+          style="background-color: rgb(255, 255, 255)"
+        >
+          <div class="px-3 pb-3 pt-3">
+            <div class="flex flex-col gap-2 items-center">
+              <div
+                class="items-center m-0 text-ng-header2-small lg:text-ng-header2-large text-black"
+              >
+                {{ $footer.gambling_support_title }}
+              </div>
+              <div
+                class="items-center m-0 text-ng-body1-small lg:text-ng-body1-large text-center text-black"
+              >
+                {{ $footer.gabmling_support_text }} <a
+                  href="tel:{{ $footer.phone }}"
+                  class="cursor-pointer text-black"
+                  >{{ $footer.phone }}</a
+                > or visit <a
+                  class="underline cursor-pointer text-black"
+                  href="https://{{ $footer.gambling_support_site }}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >{{ $footer.gambling_support_site }}</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

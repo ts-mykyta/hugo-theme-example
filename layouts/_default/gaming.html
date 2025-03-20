@@ -1,0 +1,23 @@
+{{ define "main" }}
+<div class="bg-zinc-900 min-h-screen text-white">
+  <!-- Hero Section -->
+  <div class="relative overflow-hidden bg-zinc-800 py-16">
+    <div class="absolute inset-0">
+      <div class="absolute inset-0 bg-gradient-to-r from-{{ .Site.Params.gaming.accent_color }}-500/20 to-{{ .Site.Params.gaming.accent_color }}-500/10"></div>
+    </div>
+    <div class="relative container mx-auto px-4">
+      <h1 class="text-4xl font-bold text-white text-center mb-4">{{ .Title }}</h1>
+      <p class="text-zinc-400 text-center max-w-2xl mx-auto">{{ .Site.Params.gaming.subtitle | default "Information about responsible gaming and available support" }}</p>
+    </div>
+  </div>
+
+  <!-- Content Section -->
+  <div class="container mx-auto px-4 py-12">
+    <div class="prose prose-invert prose-lg max-w-none">
+      <div class="prose prose-invert prose-headings:text-white prose-headings:font-bold prose-h2:text-2xl prose-h3:text-xl prose-p:text-zinc-300 prose-a:text-{{ .Site.Params.gaming.accent_color }}-400 prose-strong:text-white prose-ul:text-zinc-300">
+        {{ .Content }}
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }} 

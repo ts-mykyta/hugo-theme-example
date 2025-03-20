@@ -1,0 +1,133 @@
+{{- $betting := site.Params.betting -}}
+
+<section class="w-full py-8 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Card 1 -->
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <div class="bg-zinc-800 px-6 py-4 flex items-center">
+          <div class="w-8 h-8 mr-3">
+            <svg class="w-full h-full text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 19V5.414a1 1 0 00-1.707-.707l-7 7a1 1 0 000 1.414l7 7A1 1 0 0017 19zM12 3v18M3 12h18"></path>
+            </svg>
+          </div>
+          <h2 class="text-xl font-bold text-white">{{ $betting.card1.title }}</h2>
+        </div>
+        
+        {{ range $index, $match := $betting.card1.matches }}
+        <div class="{{ if ne $index 2 }}border-b border-gray-200{{ end }} p-4">
+          <div class="flex justify-between items-center">
+            <div class="flex-1">
+              {{ if eq $index 0 }}
+              <div class="flex items-center mb-2">
+                <span class="bg-red-600 text-white text-xs px-2 py-1 rounded mr-2">{{ $betting.card1.race_number }}</span>
+                <span class="text-gray-600 text-sm">{{ $betting.card1.location }}</span>
+              </div>
+              {{ end }}
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <div class="flex items-center">
+                    <span class="w-6 h-6 bg-{{ $match.color }} text-{{ $match.text_color }} flex items-center justify-center rounded-full text-xs mr-2">{{ $match.number }}</span>
+                    <span class="font-medium">{{ $match.name }}</span>
+                  </div>
+                  <div class="text-sm text-gray-500 ml-8">OP: {{ $match.opening_price }}</div>
+                </div>
+                <div class="text-right">
+                  <div class="bg-blue-50 text-blue-700 font-bold px-4 py-2 rounded hover:bg-blue-100 cursor-pointer transition-colors duration-200">
+                    Win: {{ $match.win_odds }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+
+      <!-- Card 2 -->
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <div class="bg-zinc-800 px-6 py-4 flex items-center">
+          <div class="w-8 h-8 mr-3">
+            <svg class="w-full h-full text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 19V5.414a1 1 0 00-1.707-.707l-7 7a1 1 0 000 1.414l7 7A1 1 0 0017 19zM12 3v18M3 12h18"></path>
+            </svg>
+          </div>
+          <h2 class="text-xl font-bold text-white">{{ $betting.card2.title }}</h2>
+        </div>
+        
+        {{ range $index, $match := $betting.card2.matches }}
+        <div class="{{ if ne $index 2 }}border-b border-gray-200{{ end }} p-4">
+          <div class="flex justify-between items-center">
+            <div class="flex-1">
+              {{ if eq $index 0 }}
+              <div class="flex items-center mb-2">
+                <span class="bg-red-600 text-white text-xs px-2 py-1 rounded mr-2">{{ $betting.card2.race_number }}</span>
+                <span class="text-gray-600 text-sm">{{ $betting.card2.location }}</span>
+              </div>
+              {{ end }}
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <div class="flex items-center">
+                    <span class="w-6 h-6 bg-{{ $match.color }} text-{{ $match.text_color }} flex items-center justify-center rounded-full text-xs mr-2">{{ $match.number }}</span>
+                    <span class="font-medium">{{ $match.name }}</span>
+                  </div>
+                  <div class="text-sm text-gray-500 ml-8">OP: {{ $match.opening_price }}</div>
+                </div>
+                <div class="text-right">
+                  <div class="bg-blue-50 text-blue-700 font-bold px-4 py-2 rounded hover:bg-blue-100 cursor-pointer transition-colors duration-200">
+                    Win: {{ $match.win_odds }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <div class="bg-zinc-800 px-6 py-4 flex items-center">
+          <div class="w-8 h-8 mr-3">
+            <svg class="w-full h-full text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 19V5.414a1 1 0 00-1.707-.707l-7 7a1 1 0 000 1.414l7 7A1 1 0 0017 19zM12 3v18M3 12h18"></path>
+            </svg>
+          </div>
+          <h2 class="text-xl font-bold text-white">{{ $betting.card3.title }}</h2>
+        </div>
+        
+        {{ range $index, $match := $betting.card3.matches }}
+        <div class="{{ if ne $index 2 }}border-b border-gray-200{{ end }} p-4">
+          <div class="flex justify-between items-center">
+            <div class="flex-1">
+              {{ if eq $index 0 }}
+              <div class="flex items-center mb-2">
+                <span class="bg-red-600 text-white text-xs px-2 py-1 rounded mr-2">{{ $betting.card3.race_number }}</span>
+                <span class="text-gray-600 text-sm">{{ $betting.card3.location }}</span>
+              </div>
+              {{ end }}
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <div class="flex items-center">
+                    <span class="w-6 h-6 bg-{{ $match.color }} text-{{ $match.text_color }} flex items-center justify-center rounded-full text-xs mr-2">{{ $match.number }}</span>
+                    <span class="font-medium">{{ $match.name }}</span>
+                  </div>
+                  <div class="text-sm text-gray-500 ml-8">OP: {{ $match.opening_price }}</div>
+                </div>
+                <div class="text-right">
+                  <div class="bg-blue-50 text-blue-700 font-bold px-4 py-2 rounded hover:bg-blue-100 cursor-pointer transition-colors duration-200">
+                    Win: {{ $match.win_odds }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+
+    </div>
+  </div>
+</section> 
+  </div>
+</section> 

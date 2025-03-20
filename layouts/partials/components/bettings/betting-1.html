@@ -1,0 +1,119 @@
+{{- $betting := site.Params.betting -}}
+
+<section class="w-full py-8 bg-gray-100">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Card 1 -->
+      <div class="bg-white rounded-xl overflow-hidden transform hover:scale-[1.02] transition-transform duration-300">
+        <div class="bg-gradient-to-r from-blue-600 to-blue-800 px-6 py-4">
+          <div class="flex items-center justify-between">
+            <h2 class="text-xl font-bold text-white">{{ $betting.card1.title }}</h2>
+            <div class="w-8 h-8">
+              <svg class="w-full h-full text-white opacity-80" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.229 3.771c-.5-.5-1.167-.771-1.896-.771h-12.666c-.729 0-1.396.271-1.896.771-.5.5-.771 1.167-.771 1.896v12.666c0 .729.271 1.396.771 1.896.5.5 1.167.771 1.896.771h12.666c.729 0 1.396-.271 1.896-.771.5-.5.771-1.167.771-1.896v-12.666c0-.729-.271-1.396-.771-1.896zm-13.562 13.562v-11.666h11.666v11.666h-11.666z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        
+        {{ range $index, $match := $betting.card1.matches }}
+        <div class="{{ if ne $index 2 }}border-b border-gray-100{{ end }} p-5 hover:bg-gray-50 transition-colors duration-200">
+          {{ if eq $index 0 }}
+          <div class="flex items-center mb-3">
+            <span class="bg-gradient-to-r from-red-500 to-red-600 text-white text-xs px-3 py-1 rounded-full mr-2">{{ $betting.card1.race_number }}</span>
+            <span class="text-gray-500 text-sm font-medium">{{ $betting.card1.location }}</span>
+          </div>
+          {{ end }}
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+              <span class="w-8 h-8 bg-{{ $match.color }} text-{{ $match.text_color }} flex items-center justify-center rounded-full text-sm font-bold">{{ $match.number }}</span>
+              <div>
+                <span class="font-semibold text-gray-800">{{ $match.name }}</span>
+                <div class="text-sm text-gray-500">OP: {{ $match.opening_price }}</div>
+              </div>
+            </div>
+            <button class="bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-lg font-medium hover:from-green-600 hover:to-green-700 transition-all duration-200 shadow-sm">
+              {{ $match.win_odds }}
+            </button>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+
+      <!-- Card 2 -->
+      <div class="bg-white rounded-xl overflow-hidden transform hover:scale-[1.02] transition-transform duration-300">
+        <div class="bg-gradient-to-r from-purple-600 to-purple-800 px-6 py-4">
+          <div class="flex items-center justify-between">
+            <h2 class="text-xl font-bold text-white">{{ $betting.card2.title }}</h2>
+            <div class="w-8 h-8">
+              <svg class="w-full h-full text-white opacity-80" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.229 3.771c-.5-.5-1.167-.771-1.896-.771h-12.666c-.729 0-1.396.271-1.896.771-.5.5-.771 1.167-.771 1.896v12.666c0 .729.271 1.396.771 1.896.5.5 1.167.771 1.896.771h12.666c.729 0 1.396-.271 1.896-.771.5-.5.771-1.167.771-1.896v-12.666c0-.729-.271-1.396-.771-1.896zm-13.562 13.562v-11.666h11.666v11.666h-11.666z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        
+        {{ range $index, $match := $betting.card2.matches }}
+        <div class="{{ if ne $index 2 }}border-b border-gray-100{{ end }} p-5 hover:bg-gray-50 transition-colors duration-200">
+          {{ if eq $index 0 }}
+          <div class="flex items-center mb-3">
+            <span class="bg-gradient-to-r from-red-500 to-red-600 text-white text-xs px-3 py-1 rounded-full mr-2">{{ $betting.card2.race_number }}</span>
+            <span class="text-gray-500 text-sm font-medium">{{ $betting.card2.location }}</span>
+          </div>
+          {{ end }}
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+              <span class="w-8 h-8 bg-{{ $match.color }} text-{{ $match.text_color }} flex items-center justify-center rounded-full text-sm font-bold">{{ $match.number }}</span>
+              <div>
+                <span class="font-semibold text-gray-800">{{ $match.name }}</span>
+                <div class="text-sm text-gray-500">OP: {{ $match.opening_price }}</div>
+              </div>
+            </div>
+            <button class="bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-lg font-medium hover:from-green-600 hover:to-green-700 transition-all duration-200 shadow-sm">
+              {{ $match.win_odds }}
+            </button>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bg-white rounded-xl overflow-hidden transform hover:scale-[1.02] transition-transform duration-300">
+        <div class="bg-gradient-to-r from-indigo-600 to-indigo-800 px-6 py-4">
+          <div class="flex items-center justify-between">
+            <h2 class="text-xl font-bold text-white">{{ $betting.card3.title }}</h2>
+            <div class="w-8 h-8">
+              <svg class="w-full h-full text-white opacity-80" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.229 3.771c-.5-.5-1.167-.771-1.896-.771h-12.666c-.729 0-1.396.271-1.896.771-.5.5-.771 1.167-.771 1.896v12.666c0 .729.271 1.396.771 1.896.5.5 1.167.771 1.896.771h12.666c.729 0 1.396-.271 1.896-.771.5-.5.771-1.167.771-1.896v-12.666c0-.729-.271-1.396-.771-1.896zm-13.562 13.562v-11.666h11.666v11.666h-11.666z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        
+        {{ range $index, $match := $betting.card3.matches }}
+        <div class="{{ if ne $index 2 }}border-b border-gray-100{{ end }} p-5 hover:bg-gray-50 transition-colors duration-200">
+          {{ if eq $index 0 }}
+          <div class="flex items-center mb-3">
+            <span class="bg-gradient-to-r from-red-500 to-red-600 text-white text-xs px-3 py-1 rounded-full mr-2">{{ $betting.card3.race_number }}</span>
+            <span class="text-gray-500 text-sm font-medium">{{ $betting.card3.location }}</span>
+          </div>
+          {{ end }}
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+              <span class="w-8 h-8 bg-{{ $match.color }} text-{{ $match.text_color }} flex items-center justify-center rounded-full text-sm font-bold">{{ $match.number }}</span>
+              <div>
+                <span class="font-semibold text-gray-800">{{ $match.name }}</span>
+                <div class="text-sm text-gray-500">OP: {{ $match.opening_price }}</div>
+              </div>
+            </div>
+            <button class="bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-lg font-medium hover:from-green-600 hover:to-green-700 transition-all duration-200 shadow-sm">
+              {{ $match.win_odds }}
+            </button>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+
+    </div>
+  </div>
+</section> 
